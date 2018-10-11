@@ -1,0 +1,26 @@
+{
+    "name": "Mopidy and IceCast2",
+    "version": "0.2.4",
+    "slug": "mopidy-icecast",
+    "description": "mopidy music server with icecast server",
+    "url": "https://github.com/levsa/hassio-addons/tree/master/mopidy_icecast",
+    "startup": "application",
+    "boot": "auto",
+    "image": "levsa/{arch}-mopidy-icecast",
+    "options": {"local_scan": true,
+	            "options": [
+                    {"name": "spotify/username", "value": "<YOUR_SPOTIFY_USERNAME>"},
+                    {"name": "spotify/password", "value": "<YOUR_SPOTIFY_APP_PASSWORD>"}
+                ]},
+    "schema": {
+	"local_scan": "bool?",
+	"options": [{"name": "str", "value": "str"}]
+    },
+    "devices": [],
+    "ports": {"6680/tcp": 6681, "6600/tcp": 6601, "1704/tcp": 1704, "1705/tcp": 1705},
+    "map": ["share"],
+    "arch": ["amd64", "armhf"],
+    "tmpfs": "size=10m,rw",
+    "webui": "http://[HOST]:[PORT:6681]",
+    "host_ipc": true
+}
